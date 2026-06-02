@@ -1,0 +1,10 @@
+sync_interval: 5m
+ip_echo_url: https://checkip.amazonaws.com
+template_id: your-template-id
+secret_id: your-secret-id
+secret_key: your-secret-key
+region: ap-guangzhou
+rule_protocol: tcp
+rule_port: "22"
+rule_action: accept
+rule_description: floatip-sync
