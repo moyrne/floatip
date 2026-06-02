@@ -8,3 +8,6 @@ rule_protocol: tcp
 rule_port: "22"
 rule_action: accept
 rule_description: floatip-sync
+instance_ids:
+  - your-instance-id-1
+  - your-instance-id-2

@@ -69,6 +69,11 @@ spec:
             configMapKeyRef:
               name: floatip-config
               key: rule-description
+        - name: FLOATIP_INSTANCE_IDS
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: instance-ids
         resources:
           requests:
             cpu: 50m

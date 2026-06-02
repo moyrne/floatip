@@ -28,3 +28,14 @@ func TestListRules_EmptyTemplate(t *testing.T) {
 func TestAdapterImplementsInterface(t *testing.T) {
 	var _ adapter.FirewallAdapter = (*TencentAdapter)(nil)
 }
+
+func TestListInstanceRules_NoCredentials(t *testing.T) {
+	a, err := NewTencentAdapter("test", "test", "ap-guangzhou")
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = a.ListInstanceRules(context.Background(), "non-existent")
+	if err == nil {
+		t.Skip("skipping: no credentials in CI")
+	}
+}

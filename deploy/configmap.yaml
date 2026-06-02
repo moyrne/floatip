@@ -11,3 +11,4 @@ data:
   rule-port: "ALL"
   rule-action: "accept"
   rule-description: "floatip-sync"
+  instance-ids: '<your-instance-id-1>,<your-instance-id-2>'

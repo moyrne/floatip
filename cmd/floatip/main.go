@@ -39,7 +39,7 @@ func main() {
 func loadConfig() config.Config {
 	cfg := config.Default()
 
-	v := viper.New()
+	v := viper.NewWithOptions(viper.ExperimentalBindStruct())
 	v.SetConfigName("config")
 	v.SetConfigType("yaml")
 	v.AddConfigPath(".")

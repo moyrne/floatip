@@ -13,6 +13,7 @@ type Config struct {
 	RulePort        string        `mapstructure:"rule_port"`
 	RuleAction      string        `mapstructure:"rule_action"`
 	RuleDescription string        `mapstructure:"rule_description"`
+	InstanceIDs     []string      `mapstructure:"instance_ids"`
 }
 
 func Default() Config {
