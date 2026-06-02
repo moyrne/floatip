@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: floatip-config
+data:
+  template-id: "<your-template-id>"
+  region: "ap-guangzhou"
+  sync-interval: "5m"
+  ip-echo-url: "https://checkip.amazonaws.com"
+  rule-protocol: "ALL"
+  rule-port: "ALL"
+  rule-action: "accept"
+  rule-description: "floatip-sync"

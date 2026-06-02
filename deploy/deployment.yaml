@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: floatip
+  labels:
+    app: floatip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: floatip
+  template:
+    metadata:
+      labels:
+        app: floatip
+    spec:
+      containers:
+      - name: floatip
+        image: floatip:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: FLOATIP_SECRET_ID
+          valueFrom:
+            secretKeyRef:
+              name: floatip-secret
+              key: secret-id
+        - name: FLOATIP_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: floatip-secret
+              key: secret-key
+        - name: FLOATIP_TEMPLATE_ID
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: template-id
+        - name: FLOATIP_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: region
+        - name: FLOATIP_SYNC_INTERVAL
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: sync-interval
+        - name: FLOATIP_IP_ECHO_URL
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: ip-echo-url
+        - name: FLOATIP_RULE_PROTOCOL
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: rule-protocol
+        - name: FLOATIP_RULE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: rule-port
+        - name: FLOATIP_RULE_ACTION
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: rule-action
+        - name: FLOATIP_RULE_DESCRIPTION
+          valueFrom:
+            configMapKeyRef:
+              name: floatip-config
+              key: rule-description
+        resources:
+          requests:
+            cpu: 50m
+            memory: 16Mi
+          limits:
+            cpu: 100m
+            memory: 32Mi
