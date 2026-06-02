@@ -8,7 +8,7 @@ import (
 
 func TestDetectPublicIP_Success(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("1.2.3.4\n"))
+		_, _ = w.Write([]byte("1.2.3.4\n"))
 	}))
 	defer ts.Close()
 
@@ -35,7 +35,7 @@ func TestDetectPublicIP_Non200(t *testing.T) {
 
 func TestDetectPublicIP_EmptyBody(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("  \n"))
+		_, _ = w.Write([]byte("  \n"))
 	}))
 	defer ts.Close()
 
@@ -54,7 +54,7 @@ func TestDetectPublicIP_Unreachable(t *testing.T) {
 
 func TestDetectPublicIP_TrimsWhitespace(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("  203.0.113.5  \n"))
+		_, _ = w.Write([]byte("  203.0.113.5  \n"))
 	}))
 	defer ts.Close()
 
